@@ -23,7 +23,9 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/../News\templates" />
+        <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/News_Api/templatestags" />
+        <option value="$MODULE_DIR$/News_Api/templates" />
       </list>
     </option>
   </component>
