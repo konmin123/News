@@ -7,7 +7,7 @@ from .forms import NewsForm
 
 class HomeNews(ListView):
     model = News
-    template_name = 'News_Api/news_list.html'
+    template_name = 'News_Api/public_news_list.html'
     context_object_name = "news"
     # extra_context = {'title': 'Главная'}
 
@@ -20,13 +20,27 @@ class HomeNews(ListView):
         return News.objects.filter(is_published=True)
 
 
-def index(request):
-    news = News.objects.all()
-    context = {
-        'news': news,
-        'title': "Список новостей",
-    }
-    return render(request, 'News_Api/index.html', context=context)
+class NewsByCategory(ListView):
+    model = News
+    template_name = 'News_Api/public_news_list.html'
+    context_object_name = "news"
+    allow_empty = False
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = Category.objects.get(pk=self.kwargs['category_id'])
+        return context
+
+    def get_queryset(self):
+        return News.objects.filter(category_id=self.kwargs['category_id'], is_published=True)
+
+# def index(request):
+#     news = News.objects.all()
+#     context = {
+#         'news': news,
+#         'title': "Список новостей",
+#     }
+#     return render(request, 'News_Api/index.html', context=context)
 
 
 def get_category(request, category_id):
