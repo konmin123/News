@@ -24,8 +24,9 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/templates" />
-        <option value="$MODULE_DIR$/News_Api/templatestags" />
         <option value="$MODULE_DIR$/News_Api/templates" />
+        <option value="$MODULE_DIR$/News_Api/templates/News_Api" />
+        <option value="$MODULE_DIR$/News_Api/templates/News_Mod" />
       </list>
     </option>
   </component>
