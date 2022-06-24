@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 from News_Mod.models import News, Category
@@ -43,10 +44,12 @@ class ViewNews(DetailView):
     template_name = 'News_Api/view_detail.html'
 
 
-class CreateNews(CreateView):
+class CreateNews(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     template_name = 'News_Api/add_news.html'
+    login_url = '/admin/'
     # success_url = reverse_lazy('home')
+    # raise_exception = True
 
 
 # def index(request):
