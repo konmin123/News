@@ -21,6 +21,17 @@
 
         <div class="col-md-9">
             {% block content%}CONTENT{% endblock %}
+
+        <nav aria-label="...">
+            <ui class="pagination">
+                {% for p in page_obj.paginator.page_range %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                    </li>
+                {% endfor %}
+
+            </ui>
+        </nav>
         </div>
 
     </div>
