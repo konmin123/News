@@ -1,10 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 
 from News_Mod.models import News, Category
 from .forms import NewsForm
+
+
+def register(request):
+    form = UserCreationForm
+    return render(request, 'News_Api/register.html', {"form": form})
+
+
+def login(request):
+    return render(request, 'News_Api/login.html')
 
 
 class HomeNews(ListView):
